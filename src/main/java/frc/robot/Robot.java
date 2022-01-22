@@ -8,7 +8,7 @@ import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -29,8 +29,8 @@ public class Robot extends TimedRobot {
   Spark leftMotor2 = new Spark(1);
   Spark rightMotor1 = new Spark(2);
   Spark rightMotor2 = new Spark(3);
-  SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMotor1, leftMotor2);
-  SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMotor1, rightMotor2);
+  MotorControllerGroup leftMotors = new  MotorControllerGroup(leftMotor1, leftMotor2);
+  MotorControllerGroup rightMotors = new MotorControllerGroup(rightMotor1, rightMotor2);
   // drivetrain
   DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
