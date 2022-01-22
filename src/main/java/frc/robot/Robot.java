@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   Spark leftMotor2 = new Spark(1);
   Spark rightMotor1 = new Spark(2);
   Spark rightMotor2 = new Spark(3);
-  MotorControllerGroup leftMotors = new  MotorControllerGroup(leftMotor1, leftMotor2);
+  MotorControllerGroup leftMotors = new MotorControllerGroup(leftMotor1, leftMotor2);
   MotorControllerGroup rightMotors = new MotorControllerGroup(rightMotor1, rightMotor2);
   // drivetrain
   DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
