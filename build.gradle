@@ -27,6 +27,7 @@ deploy {
                 // getTargetTypeClass is a shortcut to get the class type using a string
 
                 frcJava(getArtifactTypeClass('FRCJavaArtifact')) {
+                     jvmArgs.add("-Djava.util.logging.config.file=/home/lvuser/deploy/logging.properties")
                 }
 
                 // Static files artifact
