@@ -5,6 +5,9 @@
 package frc.robot;
 
 import edu.wpi.first.cscore.UsbCamera;
+
+import java.util.logging.Logger;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
@@ -21,6 +24,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  // Logger test
+  private final Logger logger = Logger.getLogger(this.getClass().getName());
+
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -50,6 +57,8 @@ public class Robot extends TimedRobot {
     UsbCamera cam = CameraServer.startAutomaticCapture();
     cam.setResolution(160, 120);
     cam.setFPS(30);
+
+    logger.info("robotInit complete");
   }
 
   /**
@@ -60,7 +69,9 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    logger.finer("robotPeriodic complete");
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -77,6 +88,8 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+    
+    logger.info("autonomousInit complete");
   }
 
   /** This function is called periodically during autonomous. */
@@ -91,6 +104,8 @@ public class Robot extends TimedRobot {
         // Put default auto code here
         break;
     }
+
+    logger.finer("autonomousPeriodic complete");
   }
 
   /** This function is called once when teleop is enabled. */
@@ -100,22 +115,38 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    drive.arcadeDrive(joystick.getRawAxis(1) * .75, joystick.getRawAxis(0) * .65);
+    double xSpeedRaw = joystick.getRawAxis(1);
+    double zRotatoinRaw = joystick.getRawAxis(0);
+    logger.fine("xSpeedRaw: " + xSpeedRaw + "\tzRotatoinRaw: " + zRotatoinRaw);
+    double xSpeedScaled = xSpeedRaw * .75;
+    double zRotatoinScaled = zRotatoinRaw * .65;
+    logger.fine("xSpeedScaled: " + xSpeedScaled + "\tzRotatoinScaled: " + zRotatoinScaled);
+    drive.arcadeDrive(xSpeedScaled,  zRotatoinScaled);
+
+    logger.finer("autonomousPeriodic complete");
   }
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    logger.info("disabledInit complete");
+  }
 
   /** This function is called periodically when disabled. */
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    logger.finer("disabledPeriodic complete");
+  }
 
   /** This function is called once when test mode is enabled. */
   @Override
-  public void testInit() {}
+  public void testInit() {
+    logger.info("testInit complete");
+  }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    logger.finer("testPeriodic complete");
+  }
 }
