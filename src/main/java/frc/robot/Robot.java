@@ -5,7 +5,8 @@
 package frc.robot;
 
 // Imports
-import java.util.logging.Logger;  // Logging based on https://github.com/frc6506/SkeletorCode-2022/releases/tag/v0.2.0l-Logging-Backup
+import java.util.logging.Logger; // Logging based on
+                                 // https://github.com/frc6506/SkeletorCode-2022/releases/tag/v0.2.0l-Logging-Backup
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
@@ -110,7 +111,7 @@ public class Robot extends TimedRobot {
     // Scale the raw reading to make it more controllabe and/or limit power consumption
     // double ySpeedScaled = -ySpeedRaw * .75;
     double ySpeedScaled = -ySpeedRaw * 1;
-    //ouble zRotatoinScaled = zRotatoinRaw * .65;
+    // ouble zRotatoinScaled = zRotatoinRaw * .65;
     double zRotatoinScaled = zRotatoinRaw * 1;
     logger.fine("xSpeedScaled: " + ySpeedScaled + "\tzRotatoinScaled: " + zRotatoinScaled);
 
