@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
  * arcade steering.
- * 
- * The VM is configured to automatically run this class, and to call the functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ *
+ * <p>The VM is configured to automatically run this class, and to call the functions corresponding
+ * to each mode, as described in the TimedRobot documentation. If you change the name of this class
+ * or the package after creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
