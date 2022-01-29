@@ -5,6 +5,9 @@
 package frc.robot;
 
 // Imports
+import java.util.logging.Logger; // Logging based on
+                                 // https://github.com/frc6506/SkeletorCode-2022/releases/tag/v0.2.0l-Logging-Backup
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,6 +26,9 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
  * project.
  */
 public class Robot extends TimedRobot {
+  // Get logger
+  private final Logger logger = Logger.getLogger(this.getClass().getName());
+
   // Spark motor controller
   private final Spark m_leftMotor1 = new Spark(0);
   private final Spark m_leftMotor2 = new Spark(1);
@@ -51,6 +57,8 @@ public class Robot extends TimedRobot {
     UsbCamera cam = CameraServer.startAutomaticCapture();
     cam.setResolution(160, 120);
     cam.setFPS(30);
+
+    logger.info("robotInit complete");
   }
 
   /**
@@ -64,7 +72,9 @@ public class Robot extends TimedRobot {
    * https://github.com/BobSaidHi/FRC-2022.2.1-TimedRobotTemplate
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    logger.finer("robotPeriodic complete");
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -77,11 +87,15 @@ public class Robot extends TimedRobot {
    * chooser code above as well.
    */
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    logger.info("autonomousInit complete");
+  }
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    logger.finer("autonomousPeriodic complete");
+  }
 
   /** This function is called once when teleop is enabled. */
   @Override
@@ -89,25 +103,47 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    // Read the controller and store is as variable so that it can be logged
+    double ySpeedRaw = m_stick.getY();
+    double zRotatoinRaw = m_stick.getX();
+    logger.fine("ySpeedRaw: " + ySpeedRaw + "\tzRotatoinRaw: " + zRotatoinRaw);
+
+    // Scale the raw reading to make it more controllabe and/or limit power consumption
+    // double ySpeedScaled = -ySpeedRaw * .75;
+    double ySpeedScaled = -ySpeedRaw * 1;
+    // ouble zRotatoinScaled = zRotatoinRaw * .65;
+    double zRotatoinScaled = zRotatoinRaw * 1;
+    logger.fine("xSpeedScaled: " + ySpeedScaled + "\tzRotatoinScaled: " + zRotatoinScaled);
+
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
-    m_robotDrive.arcadeDrive(-m_stick.getY(), m_stick.getX());
+    m_robotDrive.arcadeDrive(ySpeedScaled, zRotatoinScaled);
+
+    logger.finer("autonomousPeriodic complete");
   }
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    logger.info("disabledInit complete");
+  }
 
   /** This function is called periodically when disabled. */
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    logger.finer("disabledPeriodic complete");
+  }
 
   /** This function is called once when test mode is enabled. */
   @Override
-  public void testInit() {}
+  public void testInit() {
+    logger.info("testInit complete");
+  }
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    logger.finer("testPeriodic complete");
+  }
 }
