@@ -50,8 +50,9 @@ public class Robot extends TimedRobot {
    *
    * <p>This runs after the mode specific periodic functions, but before LiveWindow and
    * SmartDashboard integrated updating.
-   * 
-   * Missing defualt methods added from template: https://github.com/BobSaidHi/FRC-2022.2.1-TimedRobotTemplate
+   *
+   * <p>Missing defualt methods added from template:
+   * https://github.com/BobSaidHi/FRC-2022.2.1-TimedRobotTemplate
    */
   @Override
   public void robotPeriodic() {}
@@ -85,20 +86,19 @@ public class Robot extends TimedRobot {
     m_robotDrive.arcadeDrive(-m_stick.getY(), m_stick.getX());
   }
 
-    /** This function is called once when the robot is disabled. */
-    @Override
-    public void disabledInit() {}
-  
-    /** This function is called periodically when disabled. */
-    @Override
-    public void disabledPeriodic() {}
-  
-    /** This function is called once when test mode is enabled. */
-    @Override
-    public void testInit() {}
-  
-    /** This function is called periodically during test mode. */
-    @Override
-    public void testPeriodic() {}
+  /** This function is called once when the robot is disabled. */
+  @Override
+  public void disabledInit() {}
 
+  /** This function is called periodically when disabled. */
+  @Override
+  public void disabledPeriodic() {}
+
+  /** This function is called once when test mode is enabled. */
+  @Override
+  public void testInit() {}
+
+  /** This function is called periodically during test mode. */
+  @Override
+  public void testPeriodic() {}
 }
