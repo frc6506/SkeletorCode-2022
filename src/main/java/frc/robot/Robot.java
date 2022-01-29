@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+//Imports
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,11 +23,13 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
  * project.
  */
 public class Robot extends TimedRobot {
+  // Spark motor controller
   private final Spark m_leftMotor1 = new Spark(0);
   private final Spark m_leftMotor2 = new Spark(1);
   private final Spark m_rightMotor1 = new Spark(2);
   private final Spark m_rightMotor2 = new Spark(3);
 
+  // Motor controller groups
   private final MotorControllerGroup leftMotors =
       new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
   private final MotorControllerGroup rightMotors =
@@ -43,6 +46,7 @@ public class Robot extends TimedRobot {
     // gearbox is constructed, you might have to invert the left side instead.
     rightMotors.setInverted(true);
 
+    // Setup USB camera
     // UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
     UsbCamera cam = CameraServer.startAutomaticCapture();
     cam.setResolution(160, 120);
