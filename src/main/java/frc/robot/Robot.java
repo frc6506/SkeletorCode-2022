@@ -22,8 +22,10 @@ public class Robot extends TimedRobot {
   private final Spark m_rightMotor1 = new Spark(2);
   private final Spark m_rightMotor2 = new Spark(3);
 
-  private final MotorControllerGroup leftMotors = new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
-  private final MotorControllerGroup rightMotors = new MotorControllerGroup(m_rightMotor1, m_rightMotor2);
+  private final MotorControllerGroup leftMotors =
+      new MotorControllerGroup(m_leftMotor1, m_leftMotor2);
+  private final MotorControllerGroup rightMotors =
+      new MotorControllerGroup(m_rightMotor1, m_rightMotor2);
 
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
@@ -36,7 +38,7 @@ public class Robot extends TimedRobot {
     // gearbox is constructed, you might have to invert the left side instead.
     rightMotors.setInverted(true);
 
-    //UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
+    // UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
     UsbCamera cam = CameraServer.startAutomaticCapture();
     cam.setResolution(160, 120);
     cam.setFPS(30);
