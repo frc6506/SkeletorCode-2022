@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 // Imports
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+
 
 /**
  * This is a demo program showing the use of the DifferentialDrive class. Runs the motors with
@@ -28,6 +31,8 @@ public class Robot extends TimedRobot {
   private final Spark m_leftMotor2 = new Spark(1);
   private final Spark m_rightMotor1 = new Spark(2);
   private final Spark m_rightMotor2 = new Spark(3);
+
+  private final TalonSRX temptest = new TalonSRX(1);
 
   // Motor controller groups
   private final MotorControllerGroup leftMotors =
